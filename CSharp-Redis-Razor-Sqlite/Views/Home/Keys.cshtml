@@ -1,0 +1,112 @@
+﻿@model CSharp_Redis_Razor_Sqlite.Views.Home.KeysModel
+@{
+    ViewData["Title"] = "Keys";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h2>SqlLite Keys</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.sqlLiteEntries[0].EntryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sqlLiteEntries[0].EntryKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sqlLiteEntries[0].EntryValue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.sqlLiteEntries)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryKey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryValue)
+                </td>
+                <td>
+                    <!--
+                    <a asp-page="./Edit" asp-route-id="@item.EntryId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.EntryId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.EntryId">Delete</a>
+                    -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Redis Keys</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.redisEntries[0].EntryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.redisEntries[0].EntryKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.redisEntries[0].EntryValue)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.redisEntries)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryKey)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EntryValue)
+                </td>
+                <td>
+                    <!--
+                    <a asp-page="./Edit" asp-route-id="@item.EntryId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.EntryId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.EntryId">Delete</a>
+                    -->
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2><b>Add Redis Key</b></h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Entry.EntryId" />
+            <div class="form-group">
+                <label asp-for="Entry.EntryKey" class="control-label"></label>
+                <input asp-for="Entry.EntryKey" class="form-control" />
+                <span asp-validation-for="Entry.EntryKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Entry.EntryValue" class="control-label"></label>
+                <input asp-for="Entry.EntryValue" class="form-control" />
+                <span asp-validation-for="Entry.EntryValue" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="button" asp-page-handler="Calculate" value="Calculate" class="btn btn-info" id="btnRefreshFromSQL_Click" />
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,4 @@
+1. Create a new asp.net web core application in visual studio
+2. "Install-Package StackExchange.Redis.Extensions.Newtonsoft" in nuget package manager
+3. "Install-Package StackExchange.Redis.Extensions"
+4. "Install-Package Microsoft.EntityFrameworkCore.Sqlite"
